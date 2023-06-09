@@ -36,11 +36,11 @@ class CheggQuestionAvailabilityChecker {
         // console.log('Reached question answer page');
 
         // now find the element after reaching the page
-        const questionNotFoundSection = await page.$('div[data-test="no-questions"')
+        const questionNotFoundSection = await page.$('div[data-test="no-question"');
 
         await browserInstance.close();
 
-        return questionNotFoundSection ? true : false;
+        return !questionNotFoundSection ? true : false;
     }
 }
 
