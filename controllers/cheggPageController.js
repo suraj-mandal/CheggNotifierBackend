@@ -1,4 +1,4 @@
-const CheggQuestionAvailabilityChecker = require('./pageScraper');
+const { CheggQuestionAvailabilityService } = require('../service');
 
 
 class CheggPageController {
@@ -12,7 +12,7 @@ class CheggPageController {
 
     async checkForQuestions() {
         let browser;
-        let cheggQuestionChecker = new CheggQuestionAvailabilityChecker(this.url, this.username, this.password);
+        let cheggQuestionChecker = new CheggQuestionAvailabilityService(this.url, this.username, this.password);
         try {
             browser = await this.browserInstance;
             const questionFound = await cheggQuestionChecker.isQuestionAvailable(browser);
@@ -21,10 +21,10 @@ class CheggPageController {
             } else {
                 console.log('Question is not found!');
             }
-            return { status: questionFound, code: 200};
+            return { status: questionFound, code: 200 };
         } catch (err) {
             console.error(`Could not resolve the browser instance => ${err}`);
-            return { status: null,  code: 400 }
+            return { status: null, code: 400 }
         }
     }
 

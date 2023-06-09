@@ -1,10 +1,10 @@
 const express = require('express');
 const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 
-const browserObject = require('./browser');
-const CheggPageController = require('./pageContoller');
+const { browserObject } = require('../service');
 
-const CHEGG_URL = "https://expert.chegg.com/qna/authoring/answer";
+const { CheggPageController } = require('../controllers');
+const { CHEGG_URL } = require('../constants');
 
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.post('/status', async (req, res) => {
 
             if (questionStatus === true || questionStatus === false) {
                 res.status(StatusCodes.OK).send({ available: questionStatus });
-            } else if (questionStatusCode === StatusCodes.BAD_REQUEST){
+            } else if (questionStatusCode === StatusCodes.BAD_REQUEST) {
                 res.status(StatusCodes.BAD_REQUEST).send({
                     error: getReasonPhrase(StatusCodes.BAD_REQUEST)
                 });

@@ -1,6 +1,6 @@
 // Next testing is for invalid login credentials
 
-class CheggQuestionAvailabilityChecker {
+class CheggQuestionAvailabilityService {
     constructor(url, username, password) {
         this.url = url;
         this.username = username;
@@ -44,4 +44,4 @@ class CheggQuestionAvailabilityChecker {
     }
 }
 
-module.exports = CheggQuestionAvailabilityChecker;
+module.exports = CheggQuestionAvailabilityService;

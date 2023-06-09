@@ -1,18 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const os = require('os');
+const router = require('./routes');
+
 
 require('dotenv').config();
 
-const router = require('./router');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.use('/api', router);
+
 
 app.get('/', (_, res) => {
     const response = {
@@ -21,6 +22,7 @@ app.get('/', (_, res) => {
     }
     res.send(response);
 })
+
 
 const port = process.env.PORT || 3000;
 
