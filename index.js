@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const os = require('os');
 
 require('dotenv').config();
 
@@ -12,6 +13,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use('/api', router);
+
+app.get('/', (_, res) => {
+    const response = {
+        msg: 'Simple API for checking if you have questions available in your account or not',
+        hostname: os.hostname().toString()
+    }
+    res.send(response);
+})
 
 const port = process.env.PORT || 3000;
 

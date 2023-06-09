@@ -21,11 +21,11 @@ class CheggPageController {
             } else {
                 console.log('Question is not found!');
             }
-            return questionFound;
+            return { status: questionFound, code: 200};
         } catch (err) {
             console.error(`Could not resolve the browser instance => ${err}`);
+            return { status: null,  code: 400 }
         }
-        return null;
     }
 
 
